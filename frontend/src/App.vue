@@ -2,7 +2,7 @@
   <div id="app">
     <div class="container mt-3 mx-auto">
       <nav>
-        <router-link to="/search" class="mr-6">Search</router-link>
+        <router-link to="/" :exact="$route.path !== '/search'" class="mr-6">Search</router-link>
         <router-link to="/add" class="">Add</router-link>
       </nav>
       <transition name="slide-fade" mode="out-in">
