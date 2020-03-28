@@ -102,6 +102,9 @@ export default {
     & div:nth-child(2) {
       @apply pr-4;
     }
+    &__button {
+      @apply mx-auto px-4;
+    }
   }
 }
 

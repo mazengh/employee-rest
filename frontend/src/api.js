@@ -1,7 +1,8 @@
 import Axios from "axios";
 
 const ajax = Axios.create({
-  baseURL: `${location.host}/api`, //"http://localhost:8080/api",
+  //baseURL: `http://${location.host}/api`,
+  baseURL: "http://localhost:8080/api",
   timeout: 60 * 1000
 });
 
