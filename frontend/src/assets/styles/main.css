@@ -1,0 +1,12 @@
+/* purgecss start ignore */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+/* purgecss end ignore */
+
+@import "./base/theme.css";
+@import "./base/elements.css";
+@import "./components/spinner.css";
+
+/* purgecss start ignore */
+@import "tailwindcss/utilities";
+/* purgecss end ignore */

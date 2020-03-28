@@ -1,0 +1,87 @@
+:root {
+  /* base colors */
+  --color-primary: #1a73e8;
+  --color-primary: #2f75c1;
+  --color-secondary: #437a8e;
+  /*
+  --color-gray-100: #f7fafc;
+  --color-gray-200: #edf2f7;
+  --color-gray-300: #e2e8f0;
+  --color-gray-400: #cbd5e0;
+  --color-gray-500: #a0aec0;
+  --color-gray-600: #718096;
+  --color-gray-700: #4a5568;
+  --color-gray-800: #2d3748;
+  --color-gray-900: #1a202c; */
+
+  --color-white: #ffffff;
+  --color-black: #1a202c;
+
+  --color-disabled: var(--color-gray-700);
+
+  --color-text: var(--color-black);
+
+  /* content surfaces */
+  --color-surface-base: #e6f1f9;
+
+  /* buttons */
+  --color-surface-button: var(--color-primary);
+  --color-on-button: var(--color-white);
+  --color-surface-disabled: var(--color-disabled);
+  --color-on-disabled: var(--color-white);
+  --color-pagelink: var(--color-surface-button);
+  --color-pagelink-disabled: var(--color-gray-500);
+
+  /* feedback */
+  --color-correct: #276749;
+  --color-incorrect: #9b2c2c;
+  --color-surface-info: var(--color-surface-secondary);
+  --color-surface-correct: #f0fff4;
+  --color-surface-incorrect: #fff5f5;
+  --color-on-info: var(--color-black);
+  --color-on-correct: var(--color-black);
+  --color-on-incorrect: var(--color-black);
+
+  /* text colors */
+  --color-on-light: var(--color-black);
+  --color-on-dark: var(--color-white);
+
+  /* spacing */
+  --spacing-tight: theme("spacing.4");
+  --spacing-default: theme("spacing.6");
+  --spacing-loose: theme("spacing.8");
+
+  /* font sizes */
+  --font-size-small: theme("fontSize.xs");
+  --font-size-body: theme("fontSize.base");
+  --font-size-h3: theme("fontSize.lg");
+  --font-size-h2: theme("fontSize.xl");
+  --font-size-h1: theme("fontSize.3xl");
+  --font-size-title: theme("fontSize.3xl");
+
+  /* screen widths */
+  --container-width-sm: theme("screens.sm");
+  --container-width-md: theme("screens.md");
+  --container-width-lg: theme("screens.lg");
+  --container-width-xl: theme("screens.xl");
+}
+
+@screen sm {
+  --font-size-title: theme("fontSize.4xl");
+}
+
+@screen md {
+  :root {
+    /* font sizes */
+    --font-size-small: theme("fontSize.sm");
+    --font-size-body: theme("fontSize.lg");
+    --font-size-h3: theme("fontSize.xl");
+    --font-size-h2: theme("fontSize.2xl");
+    --font-size-h1: theme("fontSize.4xl");
+    --font-size-title: theme("fontSize.5xl");
+  }
+}
+
+@screen lg {
+  --font-size-title: theme("fontSize.6xl");
+}
