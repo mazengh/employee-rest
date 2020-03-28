@@ -3,20 +3,18 @@
     <search-form @searchEnd="onSearchEnd"></search-form>
     <div class="flex justify-center mt-6">
       <transition name="slide-fade" mode="out-in">
-        <div v-if="results" class="employee-search_div">
-          <table class="employee-search__table">
-            <thead>
-              <tr>
-                <th v-for="header in headers" :key="header">{{ header }}</th>
-              </tr>
-            </thead>
-            <tr v-for="employee in results" :key="employee.id">
-              <td v-for="(employeeProperty, key) in employee" :key="key">
-                {{ employeeProperty | format(key) }}
-              </td>
+        <results-table v-if="results">
+          <thead>
+            <tr>
+              <th v-for="header in headers" :key="header">{{ header }}</th>
             </tr>
-          </table>
-        </div>
+          </thead>
+          <tr v-for="employee in results" :key="employee.id">
+            <td v-for="(employeeProperty, key) in employee" :key="key">
+              {{ employeeProperty | format(key) }}
+            </td>
+          </tr>
+        </results-table>
       </transition>
     </div>
   </div>
@@ -24,13 +22,14 @@
 
 <script>
 import SearchForm from "@/components/SearchForm";
+import ResultsTable from "@/components/ResultsTable";
 
 const camel2title = camelCase =>
   camelCase.replace(/([A-Z])/g, match => ` ${match}`).replace(/^./, match => match.toUpperCase());
 
 export default {
   name: "employee-search",
-  components: { SearchForm },
+  components: { SearchForm, ResultsTable },
   data() {
     return {
       results: null
@@ -75,65 +74,5 @@ export default {
 
 <style lang="postcss">
 .employee-search {
-  & .employee-search_div {
-    @apply w-full;
-    overflow: auto;
-  }
-
-  .employee-search__table {
-    @apply shadow-lg rounded-lg;
-    min-width: 48rem;
-    border-collapse: separate;
-    border-spacing: 0;
-    width: 100%;
-  }
-
-  .employee-search__table td,
-  .employee-search__table th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-
-  .employee-search__table tr:first-child th:first-child {
-    border-top-left-radius: 0.5rem;
-  }
-
-  .employee-search__table tr:first-child th:last-child {
-    border-top-right-radius: 0.5rem;
-  }
-
-  .employee-search__table tr:last-child td:first-child {
-    border-bottom-left-radius: 0.5rem;
-  }
-
-  .employee-search__table tr:last-child td:last-child {
-    border-bottom-right-radius: 0.5rem;
-  }
-
-  .employee-search__table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  .employee-search__table tr:hover {
-    background-color: #ddd;
-  }
-
-  .employee-search__table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: theme("colors.blue.800");
-    color: white;
-  }
-}
-
-@screen sm {
-  .employee-search {
-  }
-}
-
-@screen md {
-  .employee-search {
-  }
 }
 </style>

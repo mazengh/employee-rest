@@ -3,20 +3,18 @@
     <add-form @added="onEmployeeAdd"></add-form>
     <div class="flex justify-center mt-6">
       <transition name="slide-fade" mode="out-in">
-        <div v-if="employee" class="add-employee_div">
-          <table class="add-employee__table">
-            <thead>
-              <tr>
-                <th v-for="header in headers" :key="header">{{ header }}</th>
-              </tr>
-            </thead>
+        <results-table v-if="employee">
+          <thead>
             <tr>
-              <td v-for="(employeeProperty, key) in employee" :key="key">
-                {{ employeeProperty | format(key) }}
-              </td>
+              <th v-for="header in headers" :key="header">{{ header }}</th>
             </tr>
-          </table>
-        </div>
+          </thead>
+          <tr>
+            <td v-for="(employeeProperty, key) in employee" :key="key">
+              {{ employeeProperty | format(key) }}
+            </td>
+          </tr>
+        </results-table>
       </transition>
     </div>
   </div>
@@ -24,13 +22,14 @@
 
 <script>
 import AddForm from "@/components/AddForm";
+import ResultsTable from "@/components/ResultsTable";
 
 const camel2title = camelCase =>
   camelCase.replace(/([A-Z])/g, match => ` ${match}`).replace(/^./, match => match.toUpperCase());
 
 export default {
   name: "add-employee",
-  components: { AddForm },
+  components: { AddForm, ResultsTable },
   data() {
     return {
       employee: null
@@ -73,65 +72,5 @@ export default {
 
 <style lang="postcss">
 .add-employee {
-  & .add-employee_div {
-    @apply w-full;
-    overflow: auto;
-  }
-
-  .add-employee__table {
-    @apply shadow-lg rounded-lg;
-    min-width: 48rem;
-    border-collapse: separate;
-    border-spacing: 0;
-    width: 100%;
-  }
-
-  .add-employee__table td,
-  .add-employee__table th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-
-  .add-employee__table tr:first-child th:first-child {
-    border-top-left-radius: 0.5rem;
-  }
-
-  .add-employee__table tr:first-child th:last-child {
-    border-top-right-radius: 0.5rem;
-  }
-
-  .add-employee__table tr:last-child td:first-child {
-    border-bottom-left-radius: 0.5rem;
-  }
-
-  .add-employee__table tr:last-child td:last-child {
-    border-bottom-right-radius: 0.5rem;
-  }
-
-  .add-employee__table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  .add-employee__table tr:hover {
-    background-color: #ddd;
-  }
-
-  .add-employee__table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: theme("colors.blue.800");
-    color: white;
-  }
-}
-
-@screen sm {
-  .add-employee {
-  }
-}
-
-@screen md {
-  .add-employee {
-  }
 }
 </style>
