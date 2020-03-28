@@ -107,4 +107,4 @@ dist
 application.properties
 
 # front end build served through spring boot web
-backend/public/*
+# backend/public/*
