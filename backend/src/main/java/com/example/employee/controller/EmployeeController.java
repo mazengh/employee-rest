@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.time.LocalDate;
-// import java.text.SimpleDateFormat;
-// import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import net.bytebuddy.asm.Advice.Local;
 
 import com.example.employee.model.Employee;
 import com.example.employee.repository.EmployeeRepository;
@@ -44,16 +40,14 @@ public class EmployeeController {
         employeeRepository.findAll().forEach(employees::add);
       }
       else {
-        LocalDate date = LocalDate.now();
-        LocalDate endInterval;
-        endInterval = end ==null ? date : LocalDate.parse(end);
+        String nameStr = name == null ? "" : name;
+        LocalDate endInterval = end == null ? LocalDate.now() : LocalDate.parse(end);
 
         if (start == null) {
-          employeeRepository.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(name, endInterval).forEach(employees::add);
+          employeeRepository.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(nameStr, endInterval).forEach(employees::add);
         } else {
-          // Date startInterval = new SimpleDateFormat("yyyy-MM-dd").parse(start);
           LocalDate startInterval = LocalDate.parse(start);
-            employeeRepository.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(name, startInterval, endInterval).forEach(employees::add);
+          employeeRepository.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(nameStr, startInterval, endInterval).forEach(employees::add);
         }
       }
 
@@ -83,6 +77,7 @@ public class EmployeeController {
     try {
       Employee _employee = employeeRepository
           .save(new Employee(employee.getFirstName(), employee.getLastName(), employee.getJobTitle(), employee.getDateOfBirth(), employee.getStartDate(), employee.getEndDate()));
+
       return new ResponseEntity<>(_employee, HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
