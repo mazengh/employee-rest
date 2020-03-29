@@ -103,8 +103,6 @@ dist
 # TernJS port file
 .tern-port
 
-# database configuration file
-backend/src/main/resources/application.properties
-
 # front end build served through spring boot web
 # backend/public/*
+

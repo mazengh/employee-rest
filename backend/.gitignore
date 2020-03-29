@@ -29,3 +29,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# database configuration file #
+/src/main/resources/application.properties

@@ -1,4 +1,5 @@
 # employee-rest
+
 > A Spring Boot Rest API with a Vue.js client
 
 Sample running demo at https://employee-rest.herokuapp.com/
@@ -8,6 +9,7 @@ Sample running demo at https://employee-rest.herokuapp.com/
 employee-rest is an example of using Spring Boot to implement a Rest API and a Vue.js client to communicate with the API.
 
 The backend service offers the below Actions:
+
 ```
 POST	/api/employees	     create new Employee
 GET	/api/employees	     retrieve all Employee
@@ -25,4 +27,7 @@ DELETE	/api/employees	     delete all Employee
 
 ### Project setup
 
-cd to `backend` folder and run the command `mvn spring-boot:run`
+1. cd to `backend` folder
+2. rename `/src/main/resources/application.properties.org` to `/src/main/resources/application.properties`
+3. enter database configuration in `/src/main/resources/application.properties`
+4. run the command `mvn spring-boot:run`
