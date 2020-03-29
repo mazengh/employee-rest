@@ -13,10 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>serving-web-content</name>
 	<description>Employee Search</description>
-	<!-- <artifactId>employee</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>employee</name>
-	<description>Employee Search</description> -->
 
 	<properties>
 		<java.version>1.8</java.version>

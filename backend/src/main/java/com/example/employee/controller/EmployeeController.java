@@ -3,8 +3,9 @@ package com.example.employee.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+// import java.text.SimpleDateFormat;
+// import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import net.bytebuddy.asm.Advice.Local;
 
 import com.example.employee.model.Employee;
 import com.example.employee.repository.EmployeeRepository;
@@ -41,17 +44,15 @@ public class EmployeeController {
         employeeRepository.findAll().forEach(employees::add);
       }
       else {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        String endDate = end == null ? formatter.format(date) : end;
-
-        Date endInterval;
-        endInterval = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+        LocalDate date = LocalDate.now();
+        LocalDate endInterval;
+        endInterval = end ==null ? date : LocalDate.parse(end);
 
         if (start == null) {
           employeeRepository.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(name, endInterval).forEach(employees::add);
         } else {
-          Date startInterval = new SimpleDateFormat("yyyy-MM-dd").parse(start);
+          // Date startInterval = new SimpleDateFormat("yyyy-MM-dd").parse(start);
+          LocalDate startInterval = LocalDate.parse(start);
             employeeRepository.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(name, startInterval, endInterval).forEach(employees::add);
         }
       }

@@ -1,7 +1,7 @@
 package com.example.employee.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 // name, job title, age, start and end date of employment
 
@@ -23,19 +23,19 @@ public class Employee {
   private String jobTitle;
 
   @Column(name = "dateOfBirth")
-  private Date dateOfBirth;
+  private LocalDate dateOfBirth;
 
   @Column(name = "startDate")
-  private Date startDate;
+  private LocalDate startDate;
 
   @Column(name = "endDate")
-  private Date endDate;
+  private LocalDate endDate;
 
 	public Employee() {
 
 	}
 
-	public Employee(String firstName, String lastName, String jobTitle, Date dateOfBirth, Date startDate, Date endDate) {
+	public Employee(String firstName, String lastName, String jobTitle, LocalDate dateOfBirth, LocalDate startDate, LocalDate endDate) {
 		this.firstName = firstName;
     this.lastName = lastName;
     this.jobTitle = jobTitle;
@@ -72,27 +72,27 @@ public class Employee {
 		this.jobTitle = jobTitle;
   }
 
-  public Date getDateOfBirth() {
+  public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
   }
 
-  public Date getStartDate() {
+  public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
   }
 
-  public Date getEndDate() {
+  public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
   }
 

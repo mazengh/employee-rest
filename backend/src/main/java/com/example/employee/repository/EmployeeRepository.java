@@ -1,7 +1,7 @@
 package com.example.employee.repository;
 
 import java.util.List;
-import java.util.Date;
+import java.time.LocalDate;
 
 // import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
@@ -17,19 +17,19 @@ public interface EmployeeRepository extends CrudRepository<Employee, Long> {
   List<Employee> findByLastNameContaining(@Param("name") String name);
 
 
-  List<Employee> findByStartDateBetween(@Param("start") Date start, @Param("end") Date end);
+  List<Employee> findByStartDateBetween(@Param("start") LocalDate start, @Param("end") LocalDate end);
 
   // @Query("SELECT e FROM Employee e WHERE (:name is null or e.firstName like %:name%) and (:start is null or e.startDate BETWEEN :start and :end)")
   // List<Employee> findByFirstNameContainingAndStartDateBetween(@Param("name") String name, @Param("start") Date start, @Param("end") Date end);
 
   @Query("SELECT e FROM Employee e WHERE (:name is null or e.firstName like %:name% or e.lastName like %:name%) and (:start is null or e.startDate BETWEEN :start and :end)")
-  List<Employee> findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(@Param("name") String name, @Param("start") Date start, @Param("end") Date end);
+  List<Employee> findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(@Param("name") String name, @Param("start") LocalDate start, @Param("end") LocalDate end);
 
 
   // @Query("SELECT e FROM Employee e WHERE (:name is null or e.firstName like %:name%) and (:end is null or e.startDate <= :end)")
   // List<Employee> findByFirstNameContainingAndStartDateLessThanEqual(@Param("name") String name, @Param("end") Date end);
 
   @Query("SELECT e FROM Employee e WHERE (:name is null or e.firstName like %:name% or e.lastName like %:name%) and (:end is null or e.startDate <= :end)")
-  List<Employee> findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(@Param("name") String name, @Param("end") Date end);
+  List<Employee> findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(@Param("name") String name, @Param("end") LocalDate end);
 
 }
