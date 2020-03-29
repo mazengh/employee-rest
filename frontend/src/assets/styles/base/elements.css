@@ -2,139 +2,19 @@ body {
   font-family: theme("fontFamily.body");
   font-size: var(--font-size-body);
   line-height: 1.5;
-  color: theme("colors.on.light");
+  color: theme("colors.gray.900");
   letter-spacing: theme("letterSpacing.wide");
   padding: calc(0.5rem + 1vmin);
 }
 
-li + li {
-  margin-top: theme("margin.3");
-}
-
-p:not(:first-child),
-ol:not(:first-child),
-ul:not(:first-child),
-dl:not(:first-child) {
-  margin-top: theme("margin.4");
-}
-
-/* headings */
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4 {
-  font-family: theme("fontFamily.headings");
-  font-weight: theme("fontWeight.normal");
-}
-
-h1 {
-  font-size: calc(1rem + 3vmin);
-  font-weight: normal;
-  line-height: 1em;
-  margin-top: theme("margin.5");
-  margin-bottom: theme("margin.4");
-}
-
-h1 + * {
-  margin-top: theme("margin.8");
-}
-
-/* H2 */
-
-h2,
-.h2,
-[aria-level="2"] {
-  font-size: var(--font-size-h2);
-  line-height: 1.25;
-  margin-top: 0;
-}
-
-h2:not(:first-child),
-[aria-level="2"]:not(:first-child),
-.h2:not(:first-child) {
-  margin-top: theme("margin.8");
-}
-
-/* H3 */
-
-h3,
-.h3,
-[aria-level="3"] {
-  font-size: var(--font-size-h3);
-  line-height: 1.25;
-  margin-top: 0;
-}
-
-h3:not(:first-child),
-[aria-level="3"]:not(:first-child),
-.h3 {
-  margin-top: theme("margin.6");
-}
-
-/* links */
-
-p a {
-  display: inline-block;
-  position: relative;
-  padding: 0 0.125em;
-  color: theme("colors.secondary");
-  border-bottom: 1px dashed theme("colors.secondary");
-  transition: all 0.25s;
-  text-decoration: none;
-  z-index: 1;
-  &:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 0%;
-    background: theme("colors.surface.secondary");
-    bottom: 0;
-    left: 0;
-    transition: height 0.25s;
-    z-index: -1;
-  }
-}
-
-p a:hover {
-  border-color: transparent;
-  &:before {
-    height: 100%;
-  }
-}
-
-hr {
-  border-width: 1px;
-  border-style: solid;
-  border-color: theme("colors.primary");
-}
-
-/* focus */
-
 *:focus {
-  outline: 0.25rem solid theme("colors.outline");
+  outline: 0.25rem solid theme("colors.blue.200");
 }
 
 button:not([disabled]):focus,
-button:not([disabled]):hover {
-  outline: 0.25rem solid theme("colors.outline");
-}
-
-figure {
-  position: relative;
-
-  &:not(:first-child) {
-    margin-top: theme("margin.4");
-  }
-  img {
-    width: 100%;
-  }
-
-  figcaption {
-    font-size: 0.875rem;
-    padding: 0.5em 0;
-  }
+button:not([disabled]):hover,
+input:not([disabled]):focus,
+input:not([disabled]):hover {
+  outline: none;
+  box-shadow: 0 0 0 3px theme("colors.blue.200");
 }

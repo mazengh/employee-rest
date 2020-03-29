@@ -3,7 +3,7 @@
 @import "tailwindcss/components";
 /* purgecss end ignore */
 
-@import "./base/theme.css";
+@import "./base/global.css";
 @import "./base/elements.css";
 @import "./components/spinner.css";
 

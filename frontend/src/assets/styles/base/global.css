@@ -1,0 +1,13 @@
+:root {
+  --font-size-body: theme("fontSize.base");
+}
+
+@screen sm {
+  --font-size-title: theme("fontSize.4xl");
+}
+
+@screen md {
+  :root {
+    --font-size-body: theme("fontSize.lg");
+  }
+}
