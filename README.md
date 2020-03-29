@@ -31,3 +31,17 @@ DELETE	/api/employees	     delete all Employee
 2. rename `/src/main/resources/application.properties.org` to `/src/main/resources/application.properties`
 3. enter database configuration in `/src/main/resources/application.properties`
 4. run the command `mvn spring-boot:run`
+5. go to `http://localhost:8080`
+
+#### Frontend notes
+
+Front end files built with Vue.js are located in the frontend folder.
+Node.js is required to be installed for the frontend to be built, but this is only necessary
+if changes are made to the front end files.
+
+To build the front end follow the steps below:
+
+1. run npm install
+2. npm run build
+
+Note that build files are automatically placed in the backend public folder
