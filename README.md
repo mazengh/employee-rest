@@ -28,10 +28,11 @@ DELETE	/api/employees	     delete all Employee
 ### Project setup
 
 1. cd to `backend` folder
-2. rename `/src/main/resources/application.properties.org` to `/src/main/resources/application.properties`
-3. enter database configuration in `/src/main/resources/application.properties`
-4. run the command `mvn spring-boot:run`
-5. go to `http://localhost:8080`
+2. rename `/src/main/resources/application.properties.h2` to `/src/main/resources/application.properties` to use H2 in-memory database.
+3. or rename `/src/main/resources/application.properties.mysql` to `/src/main/resources/application.properties` to use MySql database.
+4. enter database configuration in `/src/main/resources/application.properties`
+5. run the command `mvn spring-boot:run`
+6. go to `http://localhost:8080`
 
 #### Frontend notes
 
