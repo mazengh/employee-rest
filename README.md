@@ -42,7 +42,8 @@ if changes are made to the front end files.
 
 To build the front end follow the steps below:
 
-1. run npm install
-2. npm run build
+1. cd to `backend` folder 
+2. run `npm install`
+3. run `npm run build`
 
 Note that build files are automatically placed in the backend public folder
