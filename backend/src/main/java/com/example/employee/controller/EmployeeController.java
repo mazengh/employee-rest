@@ -44,10 +44,10 @@ public class EmployeeController {
         LocalDate endInterval = end == null ? LocalDate.now() : LocalDate.parse(end);
 
         if (start == null) {
-          employeeRepository.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(nameStr, endInterval).forEach(employees::add);
+          employeeRepository.findByFirstNameContainingOrLastNameContainingAndHireDateLessThanEqual(nameStr, endInterval).forEach(employees::add);
         } else {
           LocalDate startInterval = LocalDate.parse(start);
-          employeeRepository.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(nameStr, startInterval, endInterval).forEach(employees::add);
+          employeeRepository.findByFirstNameContainingOrLastNameContainingAndHireDateLessThanEqual(nameStr, startInterval, endInterval).forEach(employees::add);
         }
       }
 
@@ -76,7 +76,7 @@ public class EmployeeController {
   public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
     try {
       Employee _employee = employeeRepository
-          .save(new Employee(employee.getFirstName(), employee.getLastName(), employee.getJobTitle(), employee.getDateOfBirth(), employee.getStartDate(), employee.getEndDate()));
+          .save(new Employee(employee.getFirstName(), employee.getLastName(), employee.getJobTitle(), employee.getDateOfBirth(), employee.getHireDate(), employee.getLeaveDate()));
 
       return new ResponseEntity<>(_employee, HttpStatus.CREATED);
     } catch (Exception e) {
@@ -94,8 +94,8 @@ public class EmployeeController {
       _employee.setLastName(employee.getLastName());
       _employee.setJobTitle(employee.getJobTitle());
       _employee.setDateOfBirth(employee.getDateOfBirth());
-      _employee.setStartDate(employee.getStartDate());
-      _employee.setEndDate(employee.getEndDate());
+      _employee.setHireDate(employee.getHireDate());
+      _employee.setLeaveDate(employee.getLeaveDate());
       return new ResponseEntity<>(employeeRepository.save(_employee), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);

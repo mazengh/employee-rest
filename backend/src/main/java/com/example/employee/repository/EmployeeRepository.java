@@ -15,21 +15,12 @@ import com.example.employee.model.Employee;
 public interface EmployeeRepository extends CrudRepository<Employee, Long> {
   List<Employee> findByFirstNameContaining(@Param("name") String name);
   List<Employee> findByLastNameContaining(@Param("name") String name);
+  List<Employee> findByHireDateBetween(@Param("start") LocalDate start, @Param("end") LocalDate end);
 
+  @Query("SELECT e FROM Employee e WHERE (:name is null or e.firstName like %:name% or e.lastName like %:name%) and (:start is null or e.hireDate BETWEEN :start and :end)")
+  List<Employee> findByFirstNameContainingOrLastNameContainingAndHireDateLessThanEqual(@Param("name") String name, @Param("start") LocalDate start, @Param("end") LocalDate end);
 
-  List<Employee> findByStartDateBetween(@Param("start") LocalDate start, @Param("end") LocalDate end);
-
-  // @Query("SELECT e FROM Employee e WHERE (:name is null or e.firstName like %:name%) and (:start is null or e.startDate BETWEEN :start and :end)")
-  // List<Employee> findByFirstNameContainingAndStartDateBetween(@Param("name") String name, @Param("start") Date start, @Param("end") Date end);
-
-  @Query("SELECT e FROM Employee e WHERE (:name is null or e.firstName like %:name% or e.lastName like %:name%) and (:start is null or e.startDate BETWEEN :start and :end)")
-  List<Employee> findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(@Param("name") String name, @Param("start") LocalDate start, @Param("end") LocalDate end);
-
-
-  // @Query("SELECT e FROM Employee e WHERE (:name is null or e.firstName like %:name%) and (:end is null or e.startDate <= :end)")
-  // List<Employee> findByFirstNameContainingAndStartDateLessThanEqual(@Param("name") String name, @Param("end") Date end);
-
-  @Query("SELECT e FROM Employee e WHERE (:name is null or e.firstName like %:name% or e.lastName like %:name%) and (:end is null or e.startDate <= :end)")
-  List<Employee> findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual(@Param("name") String name, @Param("end") LocalDate end);
+  @Query("SELECT e FROM Employee e WHERE (:name is null or e.firstName like %:name% or e.lastName like %:name%) and (:end is null or e.hireDate <= :end)")
+  List<Employee> findByFirstNameContainingOrLastNameContainingAndHireDateLessThanEqual(@Param("name") String name, @Param("end") LocalDate end);
 
 }

@@ -3,8 +3,6 @@ package com.example.employee.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-// name, job title, age, start and end date of employment
-
 @Entity
 @Table(name = "employees")
 public class Employee {
@@ -25,23 +23,21 @@ public class Employee {
   @Column(name = "dateOfBirth")
   private LocalDate dateOfBirth;
 
-  @Column(name = "startDate")
-  private LocalDate startDate;
+  @Column(name = "hireDate")
+  private LocalDate hireDate;
 
-  @Column(name = "endDate")
-  private LocalDate endDate;
+  @Column(name = "leaveDate")
+  private LocalDate leaveDate;
 
-	public Employee() {
+	public Employee() {}
 
-	}
-
-	public Employee(String firstName, String lastName, String jobTitle, LocalDate dateOfBirth, LocalDate startDate, LocalDate endDate) {
+	public Employee(String firstName, String lastName, String jobTitle, LocalDate dateOfBirth, LocalDate hireDate, LocalDate leaveDate) {
 		this.firstName = firstName;
     this.lastName = lastName;
     this.jobTitle = jobTitle;
     this.dateOfBirth = dateOfBirth;
-    this.startDate = startDate;
-    this.endDate = endDate;
+    this.hireDate = hireDate;
+    this.leaveDate = leaveDate;
 	}
 
 	public long getId() {
@@ -80,24 +76,24 @@ public class Employee {
 		this.dateOfBirth = dateOfBirth;
   }
 
-  public LocalDate getStartDate() {
-		return startDate;
+  public LocalDate getHireDate() {
+		return hireDate;
 	}
 
-	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
+	public void setHireDate(LocalDate hireDate) {
+		this.hireDate = hireDate;
   }
 
-  public LocalDate getEndDate() {
-		return endDate;
+  public LocalDate getLeaveDate() {
+		return leaveDate;
 	}
 
-	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
+	public void setLeaveDate(LocalDate leaveDate) {
+		this.leaveDate = leaveDate;
   }
 
 	@Override
 	public String toString() {
-    return "Employee (id=" + id + ") " + firstName + " " + lastName + " was hired on " + startDate;
+    return "Employee (id=" + id + ") " + firstName + " " + lastName + " was hired on " + hireDate;
 	}
 }

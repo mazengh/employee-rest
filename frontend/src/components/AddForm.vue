@@ -23,12 +23,12 @@
       <input name="jobTitle" type="text" autocomplete="off" v-model="jobTitle" />
     </div>
     <div>
-      <label>Start Date</label>
-      <input name="startDate" type="date" v-model="startDate" />
+      <label>Hire Date</label>
+      <input name="hireDate" type="date" v-model="hireDate" />
     </div>
     <div>
-      <label>End Date</label>
-      <input name="endDate" type="date" v-model="endDate" />
+      <label>Leave Date</label>
+      <input name="leaveDate" type="date" v-model="leaveDate" />
     </div>
     <div>
       <button class="add-form__button">
@@ -54,8 +54,8 @@ export default {
       lastName: "",
       dateOfBirth: "",
       jobTitle: "",
-      startDate: "",
-      endDate: ""
+      hireDate: "",
+      leaveDate: ""
     };
   },
   computed: {
@@ -65,16 +65,9 @@ export default {
         "lastName": this.lastName,
         "jobTitle": this.jobTitle,
         "dateOfBirth": this.dateOfBirth,
-        "startDate": this.startDate,
-        "endDate": this.endDate
+        "hireDate": this.hireDate,
+        "leaveDate": this.leaveDate
       }
-
-      // const params = new URLSearchParams();
-      // this.firstName && params.append("name", this.firstName);
-      // this.lastName && params.append("name", this.firstName);
-      // this.dateOfBirth && params.append("start", this.dateOfBirth);
-      // this.startDate && params.append("start", this.startDate);
-      // this.endDate && params.append("end", this.endDate);
       return params;
     }
   },
@@ -94,8 +87,8 @@ export default {
       if (!this.jobTitle) {
         this.errors.push('Job Title is required.');
       }
-      if (!this.startDate) {
-        this.errors.push('Start Date is required.');
+      if (!this.hireDate) {
+        this.errors.push('Hire Date is required.');
       }
 
       if (!this.loading && !this.errors.length) {

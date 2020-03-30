@@ -74,7 +74,7 @@ class EmployeeApplicationTests {
 	@Test
 	void findEmployeesByFirstOrLastName() {
 		List<Employee> employees = Arrays.asList(e2, e3, e4);
-		Mockito.when(employeeRepo.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual("J", LocalDate.now()))
+		Mockito.when(employeeRepo.findByFirstNameContainingOrLastNameContainingAndHireDateLessThanEqual("J", LocalDate.now()))
 														 .thenReturn(employees);
 
 		String nameStr = "J";
@@ -89,7 +89,7 @@ class EmployeeApplicationTests {
 	@Test
 	void findEmployeesByFirstOrLastName_startingFromDate() {
 		List<Employee> employees = Arrays.asList(e2, e4);
-		Mockito.when(employeeRepo.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual("J", LocalDate.parse("2018-01-01"), LocalDate.now()))
+		Mockito.when(employeeRepo.findByFirstNameContainingOrLastNameContainingAndHireDateLessThanEqual("J", LocalDate.parse("2018-01-01"), LocalDate.now()))
 														 .thenReturn(employees);
 
 		String startDate = "2018-01-01", nameStr = "J";
@@ -105,7 +105,7 @@ class EmployeeApplicationTests {
 		List<Employee> employees = Arrays.asList(e1, e2);
 		LocalDate startDate = LocalDate.parse("2013-01-01");
 		LocalDate endDate = LocalDate.parse("2015-01-01");
-		Mockito.when(employeeRepo.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual("", startDate, endDate))
+		Mockito.when(employeeRepo.findByFirstNameContainingOrLastNameContainingAndHireDateLessThanEqual("", startDate, endDate))
 														 .thenReturn(employees);
 
 		ResponseEntity<List<Employee>> result = employeeController.getAllEmployees("", startDate.toString(), endDate.toString());
@@ -119,7 +119,7 @@ class EmployeeApplicationTests {
 	void findEmployeesWorkingUntilDate() {
 		List<Employee> employees = Arrays.asList(e1, e2, e3);
 		LocalDate endDate = LocalDate.parse("2018-01-01");
-		Mockito.when(employeeRepo.findByFirstNameContainingOrLastNameContainingAndStartDateLessThanEqual("", endDate))
+		Mockito.when(employeeRepo.findByFirstNameContainingOrLastNameContainingAndHireDateLessThanEqual("", endDate))
 														 .thenReturn(employees);
 
 		ResponseEntity<List<Employee>> result = employeeController.getAllEmployees(null, null, endDate.toString());
